@@ -23,7 +23,7 @@ if (cart_list != null) {
 <head>
 <%@include file="/includes/head.jsp"%>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Home</title>
 </head>
 <body>
 	<%@include file="/includes/navbar.jsp"%>

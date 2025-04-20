@@ -13,7 +13,7 @@ if (auth != null) {
 <head>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login</title>
 <%@include file="/includes/head.jsp"%>
 </head>
 <body>
