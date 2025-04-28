@@ -120,4 +120,54 @@ public class ProductDao {
 		}
 		return book;
 	}
+	
+	public void insertProduct(Product product) {
+		try {
+			query = "INSERT INTO products (name, category, price, image) VALUES (?, ?, ?, ?)";
+			pst = this.con.prepareStatement(query);
+			pst.setString(1, product.getName());
+			pst.setString(2, product.getCategory());
+			pst.setDouble(3, product.getPrice());
+			pst.setString(4, product.getImage());
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Insert Error: " + e.getMessage());
+		}
+	}
+
+	public boolean deleteProduct(int id) {
+		boolean result = false;
+		try {
+			query = "DELETE FROM products WHERE id = ?";
+			pst = this.con.prepareStatement(query);
+			pst.setInt(1, id);
+			int rowsAffected = pst.executeUpdate();
+			result = rowsAffected > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Delete Error: " + e.getMessage());
+		}
+		return result;
+	}
+
+	public boolean updateProduct(Product product) {
+		boolean result = false;
+		try {
+			query = "UPDATE products SET name=?, category=?, price=?, image=? WHERE id=?";
+			pst = this.con.prepareStatement(query);
+			pst.setString(1, product.getName());
+			pst.setString(2, product.getCategory());
+			pst.setDouble(3, product.getPrice());
+			pst.setString(4, product.getImage());
+			pst.setInt(5, product.getId());
+			int rowsAffected = pst.executeUpdate();
+			result = rowsAffected > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Update Error: " + e.getMessage());
+		}
+		return result;
+	}
+
 }
